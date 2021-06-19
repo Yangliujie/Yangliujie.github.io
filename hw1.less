@@ -1,0 +1,44 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all .5s;
+    outline: none;
+    list-style: none;
+    text-decoration: none;
+    user-select: none;
+}
+body{
+    height: 100vh;
+}
+a::before{
+    color: azure;
+}
+a::after{
+    color: #00c6ff;
+}
+a:hover{
+    color: chartreuse;
+}
+.float-l{
+    width: 20%;
+}
+.float-c{
+    width: 60%;
+}
+.float-r{
+    width: 20%;
+    height: 20%;
+}
+/*滚动条*/
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(transparent,#e4305dd0);
+}
+::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(transparent,#00c6ff);
+}
+//
