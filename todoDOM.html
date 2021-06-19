@@ -1,0 +1,44 @@
+<!--
+ * @Author: Shiji Yang
+ * @Date: 2021-06-19 13:53:16
+ * @LastEditTime: 2021-06-19 14:13:25
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \.vscode\todoDOM.html
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>todoDOM</title>
+        <link rel="stylesheet" href="./todoDOM.css">
+        <script src="./todoDOM.js"></script>
+        
+    </head>
+
+    <body>
+        <div class="todoapp">
+            <header class="header">
+                <h1>todos</h1>
+                <!-- Add New Item -->
+                <input class="new-todo" type="text" placeholder="What needs to be done?" autofocus>
+            </header>
+        
+            <section class="main">
+                <input class="toggle-all" type="checkbox">
+                <!-- Show List -->
+                <ul class="todo-list"></ul>
+        
+                <footer class="footer">
+                    <span class="todo-count"></span>
+                    <ul class="filters">
+                        <li><a class="selected" style="cursor:pointer;">All</a></li>
+                        <li><a class="" style="cursor:pointer;">Active</a></li>
+                        <li><a class="" style="cursor:pointer;">Completed</a></li>
+                    </ul>
+                    <button class="clear-completed">Clear completed</button>
+                </footer>
+            </section>
+        </div>
+    </body>
+</html>
