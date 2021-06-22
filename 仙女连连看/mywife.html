@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>仙女连连看</title>
+    <!---->
+    <link rel="stylesheet" href="./mywife.css">
+    <!---->
+</head>
+
+
+<body>
+
+    <div id="app" class="Flexs" :style="ReturnBg">
+        <!---->
+
+        <!--开始界面-->
+        <div class="Start_interface Flexs Columns" v-if="isToGame">
+            <h1>配对小游戏</h1>
+            <div class="Start_interface_cont Flexs Columns">
+                <span v-for="e in 4"></span>
+                <h2>游戏说明</h2>
+                点击方块使其翻转，当有两个一模一样的图片匹配时，就会
+                翻转成功并加分，请在更短时间内将全部图片进行翻转哟！
+            </div>
+            <button class="btns" @click="Star_game">开始游戏</button>
+        </div>
+        <!--  -->
+
+        <!--游戏界面-->
+        <div class="Game_interface">
+            <div class="card" v-for="(e,i) in gameList">
+                <div class="crad_bef" @click="SelectCard(e,i)" :class="{Sel_bef:e.Sel_img,complete:e.complete}"></div>
+                <div class="crad_aft" :class="{Sel_aft:e.Sel_img}">
+                    <img :src="e.randomImg" >
+                </div>
+            </div>
+        </div>
+        <!--  -->
+
+        <!--游戏侧边栏-->
+        <div class="Game_sidebar Flexs Columns">
+
+            <!--游戏状态-->
+            <div class="Game_sidebar_top Flexs Columns">
+                <h3>配对小游戏</h3>
+                <div class="the_score">
+                    当前得分：<span>{{score}}</span>
+                </div>
+                <div class="the_theycount">
+                    已使用步数：<span>{{theycount}}</span>
+                </div>
+                <div class="the_seconds">
+                    游戏结束倒计时：<span>{{seconds}}</span>
+                </div>
+                <div class="state" v-if="!isToGame">
+                    <span v-show="starts=='暂停游戏'" style="color: rgb(5, 255, 117);">游戏进行中</span>
+                    <span v-show="starts!='暂停游戏'" style="color: rgb(45, 57, 235);">游戏已暂停</span>
+                </div>
+
+            </div>
+            
+            <!--游戏排行榜-->
+            <div class="Game_sidebar_bet">
+                <h3>排行榜</h3>
+                <nav>
+                    <span>排名</span>
+                    <span>使用步数</span>
+                    <span>通关时间</span>
+                </nav>
+                <ul>
+                    <li v-for="(e,i) in ranking":title="e.times">
+                        <span :class="{one:i<3}">{{i+1}}</span>
+                        <span style="color: rgb(240, 255, 24);">{{e.ctheycount}}</span>
+                        <span style="color: rgb(9, 241, 125);">{{e.cseconde}}秒</span>
+                    </li>
+                </ul>
+            </div>
+            <!--  -->
+
+            <!--界面按钮-->
+            <div class="Game_sidebar_bot">
+                <button class="btns" @click="StopGame">{{starts}}</button>
+                <button class="btns" @click="ShowBg">背景图像</button>
+                <button class="btns" @click="Restart">重新开始</button>
+            </div>
+            <!--  -->
+
+            <!--背景图像选项界面-->
+            <div class="bg_Alert" v-show="isBgshow">
+                <div class="bg_toggle">
+                    <!--自动切换按钮-->
+                    自动切换背景：
+                    <span @click="automatic" :class="{isAct_span:toggleBg_btn}">
+                        <i :class="{isAct_i:toggleBg_btn}"></i>
+                    </span>
+                </div>
+                <!--可选择背景图-->
+                <div class="bg_cont">
+                    <img :src="e" v-for="(e,i) in bg_imglist" @click="ToggleBg(i)">
+                </div>  
+            </div>
+            <!--  -->
+
+            <!--  -->
+        </div>
+        <!--  -->
+
+        <!--游戏结束界面-->
+        <div class="GameOver_" v-show="isGameOver">
+            <h2>{{GameOverResult}}</h2>
+            <span v-if="GameOverResult=='挑战失败~'">
+                得分：{{score}}
+            </span>
+            <span v-else>
+                使用步数：{{theycount}}
+            </span>
+            <button class="Restart" @click="Restart">
+                重新开始
+            </button>
+        </div>
+        <!--  -->
+
+        <!--  -->
+    </div>
+
+    <script src="./vue.js"></script>
+    <script src="./mylife.js"></script>
+    <script>
+        
+        const card=document.querySelectorAll('.card')
+        for(let i=0;i<card.length;i++){
+            card[i].style.animationDelay=i*0.05+'s'
+        }
+
+    </script>
+
+
+</body>
+</html>
