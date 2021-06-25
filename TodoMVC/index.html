@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1">
+		<meta name="author" content="Liujie Yang">
+		<meta name="description" content="基于HTML+CSS+JS的TodoMVC">
+		<meta name="keywords" content="TodoMVC,Web Programming">
+		<title>Native·TodoMVC</title>
+		<link rel="icon" href="./favicon.ico">
+		<link rel="stylesheet" href="./css/base.css">
+		<link rel="stylesheet" href="./css/todomvc.css">
+	</head>
+	<body class="learn-bar">
+		<div id="todoapp" class="todoapp">
+			<div id="bg" class="bg"></div>
+			<header class="header">
+				<h1>todos</h1>
+				<input id="new-todo" autofocus="autofocus" autocomplete="off" placeholder="还有什么需要做的？" class="new-todo"
+					onkeyup="onNewTodoKeyup()">
+			</header>
+			<div id="main" class="main" style="display: none;">
+				<input id="toggle-all" type="checkbox" class="toggle-all" onchange="onToggleAllChange()">
+				<label for="toggle-all">标记所有为已完成</label>
+				<ul id="todo-list" class="todo-list"></ul>
+			</div>
+			<div id="footer" class="footer" style="display: none;">
+				<span class="todo-count">
+					剩余&nbsp;<strong><span id="todo-count-num">0</span></strong>&nbsp;项
+				</span>
+				<ul class="filters">
+					<li><a id="filter-all" onclick="todoFilterAll()" href="javascript:void(0)" class="selected">全部</a>
+					</li>
+					<li><a id="filter-remain" onclick="todoFilterRemain()" href="javascript:void(0)" class="">进行中</a>
+					</li>
+					<li><a id="filter-completed" onclick="todoFilterCompleted()" href="javascript:void(0)"
+							class="">已完成</a></li>
+				</ul>
+				<button id="clear-completed" class="clear-completed" onclick="onClearCompletedBtnClick()"
+					style="display: none;">清除所有已完成
+				</button>
+			</div>
+		</div>
+		<footer class="info">
+			<p>双击可以修改一个todo</p>
+			<p>由James Yang编写</p>
+		</footer>
+	</body>
+	<script type="text/javascript" src="./js/todomvc.js"></script>
+</html>
